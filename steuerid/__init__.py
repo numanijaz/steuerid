@@ -138,7 +138,7 @@ class SteuerIdValidator:
 
         Returns:
             tuple[bool, Exception]: A tuple where first element is a
-            boolean indicating the status of validation. If the validtion
+            boolean indicating the status of validation. If the validation
             encountered errors, the second element in the tuple contains
             the Exception object.
         """
