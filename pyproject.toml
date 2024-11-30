@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "steuer-id"
+version = "0.1.0"
+description = "Validate German Tax Number (Steuer-ID)."
+authors = ["Numan Ijaz <numanijaz2@gmail.com>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+
+[tool.pytest.ini_options]
+pythonpath=[
+    "."
+]
+testpaths=["tests"]

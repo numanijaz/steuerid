@@ -15,3 +15,11 @@ print(validation_result) # (True, None) -> the provided steuer id is valid
 validation_result = validator.validate("x1234567890")
 print(validation_result) # (False, OnlyDigitsAllowedException) -> invalid, only digits are allowed
 ```
+
+## Development
+For development first clone the repo. It would be better to create a virtual env
+and activate that virtual env. Inside the venv install the dependencies using
+`poetry install` command (poetry needs to be installed).
+
+### Testing
+Run `pytest` command to run the unit tests.
