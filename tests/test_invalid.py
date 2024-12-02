@@ -20,7 +20,7 @@ class TestInvalidSteuerId:
             ["11223456789", OnlyOneRepeatedDigitException],
             ["11113456789", InvalidDigitRepetitionException],
             ["21113456789", InvalidRepeatedDigitChainException],
-            ["01234567800", InvalidCheksumDigitException],
+            ["01234567800", InvalidChecksumDigitException],
         ]
     )
     def test_invalid_with_exception(self, steuer_id, expected_exception):
@@ -33,7 +33,7 @@ class TestInvalidSteuerId:
 
         is_valid, ex = self.validator.validate("01234567899")
         assert not is_valid
-        assert isinstance(ex, TestSteuerIDNotAllowedException)
+        assert isinstance(ex, SteuerTestIdNotAllowedException)
 
         monkeypatch.setenv(STEUERID_PRODUCTION_ENV, "False")
     

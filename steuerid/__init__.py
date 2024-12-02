@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 
 """
-This module contains the SteuerId class that contains
-the logic to validate a given Steuer-ID. It solely checks the
-structural validations but does not checks if the provided Steuer-ID
-is actually assigned to a person or not.
+This module contains the logic to validate a given Steuer-ID.
+It performs solely the structural validations and does not check
+whether the provided Steuer-ID is actually assigned to a person.
 """
 
 from os import environ
@@ -16,7 +15,8 @@ STEUER_ID_LENGTH = 11
 STEUERID_PRODUCTION_ENV = "STEUERID_PRODUCTION"
 
 class SteuerIdValidator:
-    def _validate_structure(self, steuer_id: str) -> None:
+    @staticmethod
+    def _validate_structure(steuer_id: str) -> None:
         """
         Performs following checks on steuer_id:
         1. steuer_id is not empty.
@@ -44,21 +44,23 @@ class SteuerIdValidator:
         if not steuer_id.isdigit():
             raise OnlyDigitsAllowedException
 
-    def _validate_test_id(self, steuer_id: str) -> None:
-        """Checks if PRODUCTION mode is on, then no test steuer_id is provided.
+    @staticmethod
+    def _validate_test_id(steuer_id: str) -> None:
+        """In PRODUCTION mode, test steuer_ids are not allowed.
 
         Args:
             steuer_id (str)
 
         Raises:
-            TestSteuerIDNotAllowed: raised if its PRODUCTION environment and
+            TestSteuerIdNotAllowed: raised if in PRODUCTION mode and
             test steuer_id (starting with '0') is provided.
         """
-        PRODUCTION = bool(environ.get(STEUERID_PRODUCTION_ENV, False))
-        if PRODUCTION and steuer_id[0] == '0':
-            raise TestSteuerIDNotAllowedException
+        production = bool(environ.get(STEUERID_PRODUCTION_ENV, False))
+        if production and steuer_id[0] == '0':
+            raise SteuerTestIdNotAllowedException
 
-    def _validate_digit_repetitions(self, steuer_id: str) -> None:
+    @staticmethod
+    def _validate_digit_repetitions(steuer_id: str) -> None:
         """
         Performs the following checks on steuer_id:
         1. One and only one digit is repeating in first 10 digits of steuer_id.
@@ -92,7 +94,8 @@ class SteuerIdValidator:
         if digit_repetitions == 3 and repeated_digit * digit_repetitions in steuer_id:
             raise InvalidRepeatedDigitChainException
 
-    def _get_checksum_digit(self, steuer_id: str) -> int:
+    @staticmethod
+    def _get_checksum_digit(steuer_id: str) -> int:
         """Computes the checksum digit based on ELSTER algorithm.
 
         Args:
@@ -123,12 +126,12 @@ class SteuerIdValidator:
             steuer_id (str)
 
         Raises:
-            InvalidCheksumDigit
+            InvalidChecksumDigit
         """
         if steuer_id[-1] != str(self._get_checksum_digit(steuer_id)):
-            raise InvalidCheksumDigitException
+            raise InvalidChecksumDigitException
 
-    def validate(self, steuer_id: str) -> tuple[bool, Exception]:
+    def validate(self, steuer_id: str) -> tuple[bool, None] | tuple[bool, SteuerIDValidationException]:
         """
         Validates the steuer_id based on criterion provided by ELSTER
         handbook (Pruefung_der_Steuer_und_Steueridentifikatsnummer.pdf).
@@ -137,7 +140,7 @@ class SteuerIdValidator:
             steuer_id (str)
 
         Returns:
-            tuple[bool, Exception]: A tuple where first element is a
+            tuple[bool, None] | tuple[bool, SteuerIDValidationException]: A tuple where first element is a
             boolean indicating the status of validation. If the validation
             encountered errors, the second element in the tuple contains
             the Exception object.
@@ -148,7 +151,7 @@ class SteuerIdValidator:
             self._validate_digit_repetitions(steuer_id)
             self._validate_checksum_digit(steuer_id)
 
-            # validation went through
+            # input is a valid steuer id
             return True, None
         except SteuerIDValidationException as ex:
             return False, ex
