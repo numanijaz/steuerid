@@ -17,7 +17,7 @@ class OnlyDigitsAllowedException(SteuerIDValidationException):
 class InvalidLengthException(SteuerIDValidationException):
     pass
 
-class TestSteuerIDNotAllowedException(SteuerIDValidationException):
+class SteuerTestIdNotAllowedException(SteuerIDValidationException):
     pass
 
 class OnlyOneRepeatedDigitException(SteuerIDValidationException):
@@ -29,5 +29,5 @@ class InvalidDigitRepetitionException(SteuerIDValidationException):
 class InvalidRepeatedDigitChainException(SteuerIDValidationException):
     pass
 
-class InvalidCheksumDigitException(SteuerIDValidationException):
+class InvalidChecksumDigitException(SteuerIDValidationException):
     pass
