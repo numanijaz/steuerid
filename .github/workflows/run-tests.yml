@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ubuntu-22.04, ubuntu-24.04, macos-latest, windows-latest]
         python: ['3.10', '3.x']
 
     name: Test with python ${{ matrix.python }} on ${{ matrix.os }}
