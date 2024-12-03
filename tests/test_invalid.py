@@ -6,8 +6,6 @@ from steuerid.exceptions import *
 
 
 class TestInvalidSteuerId:
-    validator = SteuerIdValidator()
-
     @pytest.mark.parametrize(
         ["steuer_id", "expected_exception"],
         [
@@ -24,14 +22,14 @@ class TestInvalidSteuerId:
         ]
     )
     def test_invalid_with_exception(self, steuer_id, expected_exception):
-        is_valid, ex = self.validator.validate(steuer_id)
+        is_valid, ex = SteuerIdValidator.validate(steuer_id)
         assert not is_valid
         assert isinstance(ex, expected_exception)
 
     def test_no_test_id_allowed(self, monkeypatch):
         monkeypatch.setenv(STEUERID_PRODUCTION_ENV, "True")
 
-        is_valid, ex = self.validator.validate("01234567899")
+        is_valid, ex = SteuerIdValidator.validate("01234567899")
         assert not is_valid
         assert isinstance(ex, SteuerTestIdNotAllowedException)
 
@@ -56,5 +54,5 @@ class TestInvalidSteuerId:
         '123/456/78911',
     ])
     def test_invalid_general(self, steuer_id):
-        is_valid, _ = self.validator.validate(steuer_id)
+        is_valid, _ = SteuerIdValidator.validate(steuer_id)
         assert not is_valid
