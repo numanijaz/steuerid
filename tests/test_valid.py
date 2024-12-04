@@ -3,8 +3,6 @@ import pytest
 from steuerid import SteuerIdValidator
 
 class TestValidSteuerId:
-    validator = SteuerIdValidator()
-
     @pytest.mark.parametrize("steuer_id", [
         '02476291358',
         '86095742719',
@@ -26,5 +24,5 @@ class TestValidSteuerId:
         '12345678920',
     ])
     def test_valid_general(self, steuer_id):
-        is_valid, _ = self.validator.validate(steuer_id)
+        is_valid, _ = SteuerIdValidator.validate(steuer_id)
         assert is_valid

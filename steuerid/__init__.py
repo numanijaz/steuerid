@@ -117,7 +117,8 @@ class SteuerIdValidator:
         checksum_digit = STEUER_ID_LENGTH - product
         return 0 if checksum_digit == modulo else checksum_digit
 
-    def _validate_checksum_digit(self, steuer_id: str) -> None:
+    @staticmethod
+    def _validate_checksum_digit(steuer_id: str) -> None:
         """
         Validates if the last digit in steuer_id is valid using
         the validation algorithm provided by ELSTER.
@@ -128,10 +129,11 @@ class SteuerIdValidator:
         Raises:
             InvalidChecksumDigit
         """
-        if steuer_id[-1] != str(self._get_checksum_digit(steuer_id)):
+        if steuer_id[-1] != str(SteuerIdValidator._get_checksum_digit(steuer_id)):
             raise InvalidChecksumDigitException
 
-    def validate(self, steuer_id: str) -> tuple[bool, None] | tuple[bool, SteuerIDValidationException]:
+    @staticmethod
+    def validate(steuer_id: str) -> tuple[bool, None] | tuple[bool, SteuerIDValidationException]:
         """
         Validates the steuer_id based on criterion provided by ELSTER
         handbook (Pruefung_der_Steuer_und_Steueridentifikatsnummer.pdf).
@@ -146,10 +148,10 @@ class SteuerIdValidator:
             the Exception object.
         """
         try:
-            self._validate_structure(steuer_id)
-            self._validate_test_id(steuer_id)
-            self._validate_digit_repetitions(steuer_id)
-            self._validate_checksum_digit(steuer_id)
+            SteuerIdValidator._validate_structure(steuer_id)
+            SteuerIdValidator._validate_test_id(steuer_id)
+            SteuerIdValidator._validate_digit_repetitions(steuer_id)
+            SteuerIdValidator._validate_checksum_digit(steuer_id)
 
             # input is a valid steuer id
             return True, None

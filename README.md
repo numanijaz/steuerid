@@ -14,12 +14,11 @@ An example of how it can be used:
 ```python
 from steuerid import SteuerIdValidator
 
-validator = SteuerIdValidator()
-validation_result = validator.validate("02476291358")
+validation_result = SteuerIdValidator.validate("02476291358")
 
 print(validation_result) # (True, None) -> the provided input is a valid steuer id
 
-validation_result = validator.validate("x1234567890")
+validation_result = SteuerIdValidator.validate("x1234567890")
 print(validation_result) # (False, OnlyDigitsAllowedException) -> invalid input, only digits are allowed
 ```
 
