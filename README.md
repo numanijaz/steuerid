@@ -1,3 +1,6 @@
+[![Tests](https://github.com/NumanIjaz/steuer-id/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/NumanIjaz/steuer-id/actions/workflows/run-tests.yml)
+[![Python versions](https://img.shields.io/pypi/pyversions/steuerid)](https://pypi.org/project/steuerid/)
+
 # Steuer-ID
 
 > Validates the German Tax-ID (Steuerliche Identifikationsnummer, short: Steuer-ID) using Python.
@@ -46,7 +49,7 @@ pytest
 
 ## Credits
 
-- [Numan Ijaz](NumanIjaz)
+- [Numan Ijaz](https://github.com/NumanIjaz)
 - [All Contributors](../../contributors)
 
 ## License
