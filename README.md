@@ -1,3 +1,6 @@
+[![Tests](https://github.com/NumanIjaz/steuer-id/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/NumanIjaz/steuer-id/actions/workflows/run-tests.yml)
+[![Python versions](https://img.shields.io/pypi/pyversions/steuerid)](https://pypi.org/project/steuerid/)
+
 # Steuer-ID
 
 > Validates the German Tax-ID (Steuerliche Identifikationsnummer, short: Steuer-ID) using Python.
@@ -38,7 +41,7 @@ and activate that virtual env. Inside the venv install the dependencies using
 
 ### Testing
 
-Execute `pytest` to run the unit tests.
+Execute `pytest` to run the unit tests:
 
 ```bash
 pytest
@@ -46,8 +49,9 @@ pytest
 
 ## Credits
 
-- [Numan Ijaz](NumanIjaz)
-- [All Contributors](../../contributors)
+- [Numan Ijaz](https://github.com/NumanIjaz)
+- [Krzysztof Tomasz Zembrowski](https://github.com/zembrowski)
+- [All Contributors](https://github.com/NumanIjaz/steuer-id/contributors)
 
 ## License
 
