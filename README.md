@@ -41,7 +41,7 @@ and activate that virtual env. Inside the venv install the dependencies using
 
 ### Testing
 
-Execute `pytest` to run the unit tests.
+Execute `pytest` to run the unit tests:
 
 ```bash
 pytest
@@ -50,7 +50,8 @@ pytest
 ## Credits
 
 - [Numan Ijaz](https://github.com/NumanIjaz)
-- [All Contributors](../../contributors)
+- [Krzysztof Tomasz Zembrowski](https://github.com/zembrowski)
+- [All Contributors](https://github.com/NumanIjaz/steuer-id/contributors)
 
 ## License
 
