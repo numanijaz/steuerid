@@ -14,7 +14,7 @@ from .exceptions import *
 STEUER_ID_LENGTH = 11
 STEUERID_PRODUCTION_ENV = "STEUERID_PRODUCTION"
 
-class SteuerIdValidator:
+class SteuerId:
     @staticmethod
     def _validate_structure(steuer_id: str) -> None:
         """
@@ -129,7 +129,7 @@ class SteuerIdValidator:
         Raises:
             InvalidChecksumDigit
         """
-        if steuer_id[-1] != str(SteuerIdValidator._get_checksum_digit(steuer_id)):
+        if steuer_id[-1] != str(SteuerId._get_checksum_digit(steuer_id)):
             raise InvalidChecksumDigitException
 
     @staticmethod
@@ -148,10 +148,10 @@ class SteuerIdValidator:
             the Exception object.
         """
         try:
-            SteuerIdValidator._validate_structure(steuer_id)
-            SteuerIdValidator._validate_test_id(steuer_id)
-            SteuerIdValidator._validate_digit_repetitions(steuer_id)
-            SteuerIdValidator._validate_checksum_digit(steuer_id)
+            SteuerId._validate_structure(steuer_id)
+            SteuerId._validate_test_id(steuer_id)
+            SteuerId._validate_digit_repetitions(steuer_id)
+            SteuerId._validate_checksum_digit(steuer_id)
 
             # input is a valid steuer id
             return True, None
