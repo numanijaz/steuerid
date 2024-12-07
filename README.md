@@ -1,4 +1,4 @@
-[![Tests](https://github.com/NumanIjaz/steuer-id/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/NumanIjaz/steuer-id/actions/workflows/run-tests.yml)
+[![Tests](https://github.com/NumanIjaz/steuerid/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/NumanIjaz/steuer-id/actions/workflows/run-tests.yml)
 [![Python versions](https://img.shields.io/pypi/pyversions/steuerid)](https://pypi.org/project/steuerid/)
 
 # Steuer-ID
@@ -15,13 +15,13 @@ Based on the [official ELSTER documentation](https://download.elster.de/download
 An example of how it can be used:
 
 ```python
-from steuerid import SteuerIdValidator
+from steuerid import SteuerId
 
-validation_result = SteuerIdValidator.validate("02476291358")
+validation_result = SteuerId.validate("02476291358")
 
 print(validation_result) # (True, None) -> the provided input is a valid steuer id
 
-validation_result = SteuerIdValidator.validate("x1234567890")
+validation_result = SteuerId.validate("x1234567890")
 print(validation_result) # (False, OnlyDigitsAllowedException) -> invalid input, only digits are allowed
 ```
 
@@ -51,7 +51,7 @@ pytest
 
 - [Numan Ijaz](https://github.com/NumanIjaz)
 - [Krzysztof Tomasz Zembrowski](https://github.com/zembrowski)
-- [All Contributors](https://github.com/NumanIjaz/steuer-id/contributors)
+- [All Contributors](https://github.com/NumanIjaz/steuerid/contributors)
 
 ## License
 
