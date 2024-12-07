@@ -1,4 +1,4 @@
-[![Tests](https://github.com/NumanIjaz/steuer-id/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/NumanIjaz/steuer-id/actions/workflows/run-tests.yml)
+[![Tests](https://github.com/NumanIjaz/steuerid/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/NumanIjaz/steuer-id/actions/workflows/run-tests.yml)
 [![Python versions](https://img.shields.io/pypi/pyversions/steuerid)](https://pypi.org/project/steuerid/)
 
 # Steuer-ID
@@ -51,7 +51,7 @@ pytest
 
 - [Numan Ijaz](https://github.com/NumanIjaz)
 - [Krzysztof Tomasz Zembrowski](https://github.com/zembrowski)
-- [All Contributors](https://github.com/NumanIjaz/steuer-id/contributors)
+- [All Contributors](https://github.com/NumanIjaz/steuerid/contributors)
 
 ## License
 
